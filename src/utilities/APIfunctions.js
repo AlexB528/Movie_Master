@@ -127,7 +127,7 @@ const saveUser = async (inputs) => {
     }
 
 
-        const response = await fetch('http://localhost:3000/users/createUser', {
+        const response = await fetch('moviemasterbackend-production.up.railway.app/users/createUser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,7 +148,7 @@ const loginUser = async (inputs) => {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/users/loginUser', {
+        const response = await fetch('moviemasterbackend-production.up.railway.app/users/loginUser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ const loginUser = async (inputs) => {
 
 const updateUserFavourites = async (user) => {
     try {
-        const response = await fetch('http://localhost:3000/users/retrieveUserFavourites', {
+        const response = await fetch('moviemasterbackend-production.up.railway.app/users/retrieveUserFavourites', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + user.token,
@@ -192,7 +192,7 @@ const updateUserFavourites = async (user) => {
 
 const loadUser = async (user) => {
     try {
-        const response = await fetch('http://localhost:3000/users/loadUser', {
+        const response = await fetch('moviemasterbackend-production.up.railway.app/users/loadUser', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + user.token,
