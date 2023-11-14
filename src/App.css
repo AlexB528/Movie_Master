@@ -1,0 +1,352 @@
+/* Variables */
+:root {
+	--border-radii: 15px;
+	--grid-card-padding: 10px;
+	--grid-card-width: 300px;
+	--nav-bar-height: 55px;
+  }
+  /* Variables end */
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+	background: #141414;
+	color: #ffffff;
+	font-family: 'Concert One', sans-serif;
+}
+
+.movie-app {
+  width: 100vw;
+  padding: 20px 50px 20px 50px;
+}
+
+/* .row {
+	display: grid;
+	grid-auto-flow: column;
+	overflow-x: auto;
+	gap: 10px;
+	padding: 30px;
+} */
+
+.grid {
+	display: grid;
+	overflow-x: auto;
+	/* gap: 10px; */
+	padding: 30px;
+	grid-template-columns: repeat(auto-fit, calc(var(--grid-card-width)+var(--grid-card-padding)));
+}
+
+.movies {
+	grid-row: 1 / 2;
+}
+
+.infoCard {
+	grid-row: 2 / 3;
+	border-top: 2px solid blue;
+	border-bottom: 2px solid blue;
+	background-color: #0c0f22;
+}
+
+.leftInfoCard {
+	border-left: 2px solid blue;
+	border-top-left-radius: var(--border-radii);
+	border-bottom-left-radius: var(--border-radii);
+}
+
+.middleInfoCard {
+	border-top: none;
+}
+
+.rightInfoCard {
+	border-right: 2px solid blue;
+	border-top-right-radius: var(--border-radii);
+	border-bottom-right-radius: var(--border-radii);
+}
+
+.leftSameAsTop {
+	border-top: none;
+	border-left: 2px solid blue;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: var(--border-radii);
+}
+
+.rightSameAsTop {
+	border-top: none;
+	border-right: 2px solid blue;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: var(--border-radii);
+}
+
+.grid > * {
+	width: var(--grid-card-width);
+	padding: 10px;
+}
+
+.row > * > * {
+	max-width: 100%;
+}
+
+.info-container {
+	grid-row: 2 / 3;
+	grid-column: 1 / 2;
+}
+
+.image-container {
+  position: relative;
+  transition: transform 0.2s;
+  /* grid-row: 1 / 2; */
+}
+
+.image-container:hover {
+  transform: scale(1.1);
+  z-index: 1; /* This makes the image pop over the neighboring images */
+  cursor: pointer;
+}
+
+.headerANDsearch {
+  display: block;
+}
+
+.cardItem {
+	/* background: rgba(0, 0, 0, 0.8); */
+	background: rgba(151, 226, 129, 0.8);
+	box-sizing: border-box;
+	width: 100%;
+	padding: 20px;
+	text-align: center;
+}
+
+.overlay {
+	transition: 0.5s ease;
+	opacity: 0;
+}
+
+
+.image-container:hover .overlay {
+	opacity: 1;
+}
+
+.overlayContainer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	font-size: 20px;
+}
+
+.moreInfo {
+	width: 100%;
+	font-size: 20px;
+	height: 450px;
+}
+
+.gridForCast {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); /* Adjust '92px' to match the minimum width of your cards */
+	grid-auto-rows: minmax(min-content, max-content); /* This will make rows as tall as the tallest item */
+	gap: 10px; /* Adjust the gap between grid items if needed */
+	height: 450px;
+	overflow-y: auto;
+}
+
+.moreInfoSelected {
+	border: 2px solid blue;
+	border-bottom: none;
+	border-top-left-radius: var(--border-radii);
+	border-top-right-radius: var(--border-radii);
+}
+
+.load-more-container {
+	display: flex; /* Use flexbox to align children */
+	justify-content: center; /* Center children horizontally */
+	align-items: center; /* Center children vertically */
+	flex-direction: column; /* Stack children vertically */
+}
+
+@keyframes expand {
+	0% {
+	  transform: scaleY(0);
+	}
+  
+	70% {
+	  transform: scaleY(1.1);
+	}
+	
+	100% {
+	  transform: scaleY(1);
+	}
+  }
+  
+  @keyframes collapseAAA {
+	0% {
+	  transform: scaleY(1);
+	}
+  
+	20% {
+	  transform: scaleY(1.1);
+	}
+	
+	100% {
+	  transform: scaleY(0) scaleX(0);
+	}
+  }
+
+/* navbar */
+
+#menuContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: calc(var(--nav-bar-height)*0.15);
+}
+
+nav a:link, nav a:visited {
+    transition: var(--transition);
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+nav a.viewed {
+    color: aqua;
+}
+
+nav a:hover, nav a:active {
+    color: rgb(247, 162, 5);
+    cursor: pointer;
+}
+
+
+
+.nav-Title {
+    font-size: 2rem;
+    min-width: 16rem;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+nav {
+  position: sticky;
+  width: 100%;
+  height: var(--nav-bar-height);
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--nav-bg-color);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav h1 {
+  color: var(--primary-color);
+}
+
+nav ul li {
+  font-weight: var(--bold-font);
+}
+
+.burger-menu {
+  color: var(--primary-color);
+  width: 55px;
+  font-size: 2rem;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  /* display: none; */
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+nav ul {
+	display: flex;
+	gap: 1.9rem;
+}
+
+
+.userForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-content {
+    display: none;
+	background-color: #757575;
+}
+
+.dropdown-content * {
+    margin: 8px;
+    background-color: var(--nav-bg-color);
+}
+
+.menuExpand {
+    display: block;
+    animation: expand 500ms ease-in-out;
+    transform-origin: top;
+}
+
+.menuCollapse {
+    display: block;
+    animation: collapseAAA 500ms ease-in-out;
+    transform-origin: top;
+    animation-fill-mode: forwards;
+}
+
+.nav-button {
+    color: var(--primary-color);
+    padding: 7px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    transition: var(--transition);
+    margin: 5px;
+}
+
+.nav-button:hover, .nav-button:active {
+    color: rgb(247, 162, 5);
+    cursor: pointer;
+}
+
+#menuContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: calc(var(--nav-bar-height)*0.15);
+}
+/* navbar end */
+
+.filterForm {
+	display: flex;
+	gap: 20px;
+}
+
+.input-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.input-group label {
+	align-self: flex-start;
+	margin-bottom: 10px;
+}
+
+.errorList {
+	list-style: circle;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-left: 5px;
+}
+
+.errorContainer {
+	color: red;
+}
