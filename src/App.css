@@ -4,6 +4,8 @@
 	--grid-card-padding: 10px;
 	--grid-card-width: 300px;
 	--nav-bar-height: 55px;
+	--more-info-bg-colour: rgba(21, 35, 124, 0.815);
+	--translate-more-info: translateY(50px) scale(1);
   }
   /* Variables end */
 
@@ -46,37 +48,26 @@ body {
 
 .infoCard {
 	grid-row: 2 / 3;
-	border-top: 2px solid blue;
-	border-bottom: 2px solid blue;
-	background-color: #0c0f22;
+	background-color: var(--more-info-bg-colour);
+	transform: var(--translate-more-info);
 }
 
 .leftInfoCard {
-	border-left: 2px solid blue;
 	border-top-left-radius: var(--border-radii);
 	border-bottom-left-radius: var(--border-radii);
 }
 
-.middleInfoCard {
-	border-top: none;
-}
-
 .rightInfoCard {
-	border-right: 2px solid blue;
 	border-top-right-radius: var(--border-radii);
 	border-bottom-right-radius: var(--border-radii);
 }
 
 .leftSameAsTop {
-	border-top: none;
-	border-left: 2px solid blue;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: var(--border-radii);
 }
 
 .rightSameAsTop {
-	border-top: none;
-	border-right: 2px solid blue;
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: var(--border-radii);
 }
@@ -106,6 +97,11 @@ body {
   z-index: 1; /* This makes the image pop over the neighboring images */
   cursor: pointer;
 }
+
+.moreInfoSelected:hover {
+	transform: var(--translate-more-info);
+	z-index: 1; /* This makes the image pop over the neighboring images */
+  }
 
 .headerANDsearch {
   display: block;
@@ -153,10 +149,12 @@ body {
 }
 
 .moreInfoSelected {
-	border: 2px solid blue;
-	border-bottom: none;
+	/* border: 2px solid blue;
+	border-bottom: none; */
+	background-color: var(--more-info-bg-colour);
 	border-top-left-radius: var(--border-radii);
 	border-top-right-radius: var(--border-radii);
+	transform: var(--translate-more-info)
 }
 
 .load-more-container {

@@ -14,7 +14,7 @@ function Navigation(props) {
     const logInNavButtonRef = useRef(null);
     const logInContainerRef = useRef(null);
 
-    const toggleSignIn = () => {
+    const toggleSignInStyle = () => {
         let placeholder;
         if (signInStyle.status === 'first' || signInStyle.status === 'collapsed') {
             placeholder = {status:'expanded',style:'dropdown-content menuExpand'};
@@ -66,11 +66,11 @@ function Navigation(props) {
                     {!props.user.username &&
                     <>
                       <li id="signInContainer" ref={signInContainerRef}>
-                        <div className="nav-button nav-link" onClick={toggleSignIn} ref={signInNavButtonRef}>
+                        <div className="nav-button nav-link" onClick={toggleSignInStyle} ref={signInNavButtonRef}>
                             Sign Up
                         </div>
                         <div className={signInStyle.style}>
-                            <UserForm />
+                            <UserForm toggleParentSignInStyle={toggleSignInStyle} />
                         </div>
                       </li>
                       

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { saveUser } from '../utilities/APIfunctions';
 
-const UserForm = () => {
+const UserForm = (props) => {
     const [inputs, setInputs] = useState({});
     const [showForm, setShowForm] = useState(true)
     const [validationErrors, setValidationErrors] = useState(null);
@@ -18,6 +18,8 @@ const UserForm = () => {
       if (result.message == 'User successfully saved') {
         setValidationErrors(null);
         alert(result.message + ', please log in')
+        props.toggleParentSignInStyle();  
+        setInputs({})
       } else {
         console.log(result.errorDetails)
         setValidationErrors(result.errorDetails)

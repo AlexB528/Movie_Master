@@ -35,6 +35,8 @@ const [user, setUser] = useState({favourites:[]});
 const [moviesQuery, setMoviesQuery] = useState(false);
 
 const updateUser = async () => {
+  console.log(Cookies.get('user'));
+  console.log(Cookies.get('user').username);
   if (Cookies.get('user')) {
     try {
       const userCookie = JSON.parse(Cookies.get('user'));
